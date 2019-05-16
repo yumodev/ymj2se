@@ -16,8 +16,8 @@ public class ClassLoaderTest {
      * 获取类加载器的加载路径
      */
     public static void getClassLoaderPath(){
-        System.out.println(ClassLoader.getSystemClassLoader());
-        System.out.println(ClassLoaderTest.class.getClassLoader());
+        System.out.println("SystemClassLoader:"+ClassLoader.getSystemClassLoader());
+        System.out.println("当前类的classLoader:"+ClassLoaderTest.class.getClassLoader());
 
         System.out.println("打印AppClassLoader的加载路径");
         ClassLoader appClassLoader = ClassLoaderTest.class.getClassLoader();

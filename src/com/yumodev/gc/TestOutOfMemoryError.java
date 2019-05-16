@@ -9,7 +9,6 @@ import java.util.List;
 public class TestOutOfMemoryError {
     public static class OOMObject{
 
-
     }
 
     public static void testOutOfMemory(){

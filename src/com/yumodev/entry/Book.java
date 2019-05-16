@@ -1,10 +1,12 @@
 package com.yumodev.entry;
 
+import java.io.Serializable;
+
 /**
  * Created by yumodev
  * Book类,目前用于反射测试
  */
-public class Book {
+public class Book implements Serializable {
     /**
      * 书的名字
      */
@@ -23,6 +25,12 @@ public class Book {
      */
     public Book(){
         count++;
+    }
+
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     /**
@@ -77,5 +85,11 @@ public class Book {
      */
     public static int getCount(){
         return count;
+    }
+
+
+    public static Book getInstance(String test){
+        System.out.println(test);
+        return new Book();
     }
 }

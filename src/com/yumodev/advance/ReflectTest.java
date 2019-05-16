@@ -1,8 +1,9 @@
 package com.yumodev.advance;
 
-
 import com.yumodev.entry.Book;
 
+import com.yumodev.utils.Reflect;
+import com.yumodev.utils.ReflectException;
 import junit.framework.TestCase;
 
 import org.junit.Test;
@@ -21,12 +22,32 @@ public class ReflectTest extends TestCase{
     public ReflectTest() {
     }
 
+    /**
+     * 测试创建对象实例的方法
+      */
+    public void testCreateIntance(){
+        //new 方法
+        Book book = new Book();
+        System.out.println(book.toString());
+        //通过反射创建
+        try {
+            book = Book.class.newInstance();
+            System.out.println(book.toString());
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        //通过clone拷贝的方式
+
+    }
+
     public void testGetClass(){
         Book book = new Book();
-        System.out.println("通过实例获取类对象"+book.getClass().getName());
-        System.out.println("通过.class获取类的对象"+Book.class.getName());
+        System.out.println("通过实例获取类的名称"+book.getClass().getName());
+        System.out.println("通过.class获取类的名称"+Book.class.getName());
         try {
-            System.out.println("通过Class.forName获取类对象"+Class.forName("com.yumodev.java.entry.Book").getName());
+            System.out.println("通过Class.forName获取类对象"+Class.forName("com.yumodev.entry.Book").getName());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -345,4 +366,18 @@ public class ReflectTest extends TestCase{
             e.printStackTrace();
         }
     }
+
+
+    @Test
+    public void testBookGetInstance(){
+        int count = -1;
+        try {
+            Reflect reflect = Reflect.on("com.yumodev.entry.Book").call("getInstance", "test");
+            count = reflect.call("getCount").get();
+        }catch (ReflectException e){
+            e.printStackTrace();
+        }
+        System.out.println(count);
+    }
+
 }

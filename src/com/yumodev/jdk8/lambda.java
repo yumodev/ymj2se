@@ -62,7 +62,7 @@ public class lambda {
     public static void main(String[] args){
         lambda.testThreadRunnable();
         lambda.testThreadRunnable1();
-        //lambda.testButtonAction();
+        lambda.testButtonAction();
         lambda.testForEach();
     }
 }
