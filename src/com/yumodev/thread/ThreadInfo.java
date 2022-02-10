@@ -26,6 +26,7 @@ public class ThreadInfo  {
         thread.start();
         System.out.println(thread.getState());
 
+
     }
 
     public static void main(String[] args) {
